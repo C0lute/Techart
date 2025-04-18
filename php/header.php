@@ -11,6 +11,9 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="/styles/normalize.css">
    <link rel="stylesheet" href="/styles/style.css">
+   
+   
+   
  </head>
 <body>
 <header class="header container">
@@ -31,13 +34,15 @@
     if ($page == "/detal.php"){
         ?>
         <hr style="margin: 2% auto;">
+        <div class="nav-menu">
         <?
         include 'menu.php';
         foreach($menu as $item => $value){
-            echo '<a href="' . $item . '">' . $value . '</a>';
+            echo '/<a href="' . $item . '">' . $value . '</a>';
         }   
     }
 ?>
+        </div>
         
 
 </header>

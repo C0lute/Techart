@@ -10,9 +10,6 @@
     max-width: 1920px;
     width: 100%;
 }
-.header a{
-    display:block;
-}
 .header{
     padding-top: 2%;
 }
@@ -70,7 +67,7 @@
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    width: 740px;
+    width: 720px;
     
 }
 
@@ -83,7 +80,8 @@
     border: solid #841844 2px;
     font-size: 16px;    
     font-weight: 600;
-    width:max-content; 
+    width:max-content;
+    cursor: pointer;
 }
 
 .news-title{
@@ -159,5 +157,5 @@
     display: flex;
     flex-direction: column;
     gap: 50px;
-    margin: 0 0 2% 0;
+    margin: 2% 0;
 }
