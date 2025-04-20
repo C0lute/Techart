@@ -42,12 +42,11 @@
     font-weight: 600;
     position: relative;
     margin: 2% 0;
-    width:max-content;
 }
 .news-item:hover h3{
     color:#841844;
 }
-.news-item:hover button{
+.news-item:hover button, .news-item:hover a{
     background-color: #841844;
     color: white;
 }
@@ -111,12 +110,10 @@
 
 
 
-.news-item:hover button > svg > g > path {
+.news-item:hover button > svg > g > path, .news-item:hover > a > svg > g > path{
 	fill: white;
 }
-.btn-item:hover > svg > g > path {
-	fill: white;
-}
+
 
 .news-button{
 	order: 4;
@@ -158,4 +155,20 @@
     flex-direction: column;
     gap: 50px;
     margin: 2% 0;
+}
+.nav-menu{
+    display: inline-flex;
+    padding-top: 2%;
+}
+.nav-menu a{
+    text-decoration: none;
+    color: black;
+}
+.atest:not(:last-child):after{
+    content: "/";
+    padding: 0 5px;
+    text-decoration: none;
+}
+.atest:last-child{
+    color: grey;
 }

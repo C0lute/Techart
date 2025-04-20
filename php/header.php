@@ -1,5 +1,8 @@
 <? 
-    $page = "$_SERVER[REQUEST_URI]";
+    include 'php/bd.php';
+    $args = "$_SERVER[REQUEST_URI]";
+    // echo $args;
+    // echo $_GET['id'];
     
 ?>
 <!DOCTYPE html>
@@ -27,18 +30,31 @@
             // include 'BankAccount.php';
             // include 'Animal.php';
             // include 'Share.php';
-             //include 'interface.php';
+            //include 'interface.php';
             //include 'libs.php';
         ?>
 <? 
-    if ($page == "/detal.php"){
+    if ($args == ("/detal.php?id=".$_GET['id'])){
         ?>
         <hr style="margin: 2% auto;">
         <div class="nav-menu">
         <?
         include 'menu.php';
+       if ($res){
+        while ($row=$res->fetch()){
+            // echo "<br>".$row['id'];
+            if ($_GET['id'] == $row['id']){
+                    $menu += [$args=>$row['title']];
+                    break;
+                }
+            }
+        }
+       
+        ?>
+        <?
         foreach($menu as $item => $value){
-            echo '/<a href="' . $item . '">' . $value . '</a>';
+            
+            echo '<a class="atest"href="' . $item . '">' . $value . '</a>';
         }   
     }
 ?>

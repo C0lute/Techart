@@ -1,11 +1,7 @@
-    <?php include 'php/header.php';
-    include 'php/bd.php';
-    ?>
-    
-              <?php 
-
-        if ($res1){
-            while ($row1=$res1->fetch()){
+    <?php include 'php/header.php';?>
+    <?php 
+        if ($query1){
+            while ($row1=$query1->fetch()){
                 ?>
                 <div class="logo" style="background-image: url('/img/<?= $row1['image'] ?>');">
                     <div class="logo_text container">
@@ -13,16 +9,16 @@
                         <p class="logo_p"><?= strip_tags($row1['announce']) ?></p>
                         </div>
                         </div>
-                        <?
-                    }
-                }
-             ?>
+                <?
+            }
+        }
+    ?>
     <div class="container">
         <h2 class="h2">Новости</h2>
         <div class="news">  
              <?php 
-                if ($querry){
-                    while ($row=$querry->fetch()){
+                if ($query){
+                    while ($row=$query->fetch()){
                         ?>
                         <a class="news-item" href="/detal.php?id=<?= $row['id']?>">
                         <span class="news-date"><?= $row['date_fmt'] ?></span>
