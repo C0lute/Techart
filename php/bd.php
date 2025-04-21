@@ -1,6 +1,6 @@
 <?php
 $user = "root";
-$pass = "root";
+$pass = "";
 $dsn = "mysql:host=localhost;dbname=mysite;charset=utf8";
 $db = new PDO($dsn, $user, $pass);
 $sql="select *, DATE_FORMAT(`date`, '%d.%m.%Y') date_fmt from `news` order by `date` desc limit ?,?";

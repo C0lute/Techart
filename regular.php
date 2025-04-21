@@ -33,72 +33,30 @@
             echo "<br> домен = ".$domen2." : ".preg_match('{(([a-z 0-9])+\.)?([a-z 0-9])+\.*}', $domen2);
             echo "<br> домен = ".$domen3." : ".preg_match('{(([a-z 0-9])+\.)?([a-z 0-9])+\.*}', $domen3);  
             
-            //echo "<br>".preg_match('{(([a-z 0-9])+\.)?([a-z 0-9])+\.*}', $domen3, $m);  
             echo '<pre>';
             print_r($m);
             echo '</pre>';
 
-            $string ="name = Федя\n email = sd@mail.ru\n age = 98\n";
+            $string = "name=Федя\n email=sd@mail.ru\n age=98\n";
             $strings = explode("\n", $string);
-            $massiv=[];
-            echo "<br>";
-            //var_dump($strings);
-            // echo "<br>".$strings[0];
-            // echo "<br>".$strings[1];
-            var_dump($strings);
-            foreach($strings as $item => $value){
-                //$trimmed = trim($strings, " ");
-                if(preg_match('{\d+\ = \d+}', $strings[$item], $m)){
+            $result = [];
 
+            foreach ($strings as $line) {
+                $trimmed = trim($line);
+                if (empty($trimmed)) continue;
+                
+                // Используем preg_match с правильным регулярным выражением
+                if (preg_match('{^([^=]+)=(.*)$}', $trimmed, $matches)) {
+                    $key = trim($matches[1]);
+                    $value = trim($matches[2]);
+                    $result[$key] = $value;
                 }
-             //var_dump($m);
-             echo "<br>".var_dump($m);
-
+                echo '<pre>';
+                print_r($result);
+                echo '</pre>';
+                
             }
-           
-
-            
-
-            // while ($i<count($strings)){
-            //     preg_match('{}', $string[$i], $m);
-            //     echo $m;
-            //     //$massiv += [$strings[$i]=>$strings[++$i]];
-                
-            //     $i++;   
-               
-                
-            // }
-            // //var_dump($massiv);
-            // echo '<pre>';
-            // print_r($massiv);
-            // echo '</pre>';
-
-
-
-
-
-            
-            // $string ="name = Федя\n email = sd@mail.ru\n age = 98\n";
-            // $strings = explode("\n", $string);
-            // $massiv=[];
-            // echo "<br>";
-            // //var_dump($strings);
-            // echo "<br>".$strings[0];
-            // echo "<br>".$strings[1];
-            
-            // $i=0;
-            // while ($i<count($strings)){
-            //     //$trimmed = trim($strings[$i], "");
-            //     echo "<br>".$trimmed;
-            //     //$massiv += [$strings[$i]=>$strings[++$i]];
-            //     $i++;
-               
-                
-            // }
-            // //var_dump($massiv);
-            // echo '<pre>';
-            // print_r($massiv);
-            // echo '</pre>';
+          
             
             
 
