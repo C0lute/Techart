@@ -1,8 +1,8 @@
     <?php include 'php/header.php';
     include 'php/bd.php';
-    if ($query){
-        while ($row=$query->fetch()){
-            echo "<br>".$row['id'];
+    if ($res){
+        while ($row=$res->fetch()){
+
             if ($_GET['id'] == $row['id']){
     ?>
 

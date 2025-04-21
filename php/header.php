@@ -1,8 +1,8 @@
 <? 
     include 'php/bd.php';
     $args = "$_SERVER[REQUEST_URI]";
-    // echo $args;
-    // echo $_GET['id'];
+     //echo "<p style ='padding:0 0 0 20px;'>".$args."</p>";
+     ///echo "<br><p style ='padding:0 0 0 20px;'>".$_GET['id']."</p>";  
     
 ?>
 <!DOCTYPE html>
@@ -34,7 +34,7 @@
             //include 'libs.php';
         ?>
 <? 
-    if ($args == ("/detal.php?id=".$_GET['id'])){
+    if(isset($_GET['id']) && $args == ("/detal.php?id=".$_GET['id']) ){
         ?>
         <hr style="margin: 2% auto;">
         <div class="nav-menu">
@@ -42,7 +42,6 @@
         include 'menu.php';
        if ($res){
         while ($row=$res->fetch()){
-            // echo "<br>".$row['id'];
             if ($_GET['id'] == $row['id']){
                     $menu += [$args=>$row['title']];
                     break;
