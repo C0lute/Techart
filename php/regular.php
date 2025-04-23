@@ -1,4 +1,7 @@
+<script src="/js/inputmask.js"></script>
 <?php
+            include "../vendor/autoload.php";
+            
             // $input = "atext";
             // echo preg_match('{a+}', $input);
             // echo "<br>".preg_match('{a*}', $input);
@@ -33,33 +36,73 @@
             echo "<br> домен = ".$domen2." : ".preg_match('{(([a-z 0-9])+\.)?([a-z 0-9])+\.*}', $domen2);
             echo "<br> домен = ".$domen3." : ".preg_match('{(([a-z 0-9])+\.)?([a-z 0-9])+\.*}', $domen3);  
             
-            echo '<pre>';
-            print_r($m);
-            echo '</pre>';
+            // echo '<pre>';
+            // print_r($m);
+            // echo '</pre>';
 
-            $string = "name=Федя\n email=sd@mail.ru\n age=98\n";
+            $string = "name = Федя\n email= sd@mail.ru\n age = 98\n";
             $strings = explode("\n", $string);
-            $result = [];
+            $strings_array = [];
 
             foreach ($strings as $line) {
                 $trimmed = trim($line);
-                if (empty($trimmed)) continue;
                 
-                // Используем preg_match с правильным регулярным выражением
-                if (preg_match('{^([^=]+)=(.*)$}', $trimmed, $matches)) {
-                    $key = trim($matches[1]);
-                    $value = trim($matches[2]);
-                    $result[$key] = $value;
+                
+                
+                if (preg_match('{^([^=]+\s*?)=(\s*?.*)$}', $trimmed, $m)) { //доделать с проверкой пробелов
+                    $key = trim($m[1]);
+                    $value = trim($m[2]);
+                    $strings_array[$key] = $value;
                 }
-                echo '<pre>';
-                print_r($result);
-                echo '</pre>';
+
                 
             }
-          
+            // echo '<pre>';
+            // print_r($masiv);
+            // echo '</pre>';
+
+            
+            dump($strings_array);
+
+            use BaconQrCode\Renderer\ImageRenderer;
+            use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
+            use BaconQrCode\Renderer\RendererStyle\RendererStyle;
+            use BaconQrCode\Writer;
+            
+            $renderer = new ImageRenderer(
+                new RendererStyle(400),
+                new ImagickImageBackEnd()
+            );
+            $writer = new Writer($renderer);
+            $writer->writeFile('https://web.techart.ru/', 'qrcode.png');
             
             
 
 
 
+?>
+
+<form action="/php/getpost.php" method="post">
+    <input type="text" name="text">
+    <input type="email" name="email">
+    <input type="textarea" name="textarea">
+    <input type="text" name="text2" id="selector">
+    <input type="submit" value="отправить">
+</form>
+<script>
+    var selector = document.getElementById("selector");
+
+    var im = new Inputmask("+7(999)999-99-99");
+    im.mask(selector);
+</script>
+<?php
+
+
+
+if (!isset($_POST)){
+$name=$_POST['text'];
+$email=$_POST['email'];
+$textarea=$_POST['textarea'];
+mail($email, $name, $textarea);
+}
 ?>
