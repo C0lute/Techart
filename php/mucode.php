@@ -181,6 +181,6 @@
 
 </head>
 <body>
-    
+    <script src="../webpack/dist/new.js"></script>
 </body>
 </html>

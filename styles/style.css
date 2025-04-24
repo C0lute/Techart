@@ -21,6 +21,7 @@
     background-size: cover;
     width: 100%;
     margin: 2% 0;
+    background-position: center;
 
 
 }
@@ -173,6 +174,8 @@
 .nav-menu {
     display: inline-flex;
     padding-top: 2%;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .nav-menu a {
