@@ -30,6 +30,7 @@ include "./bd.php";
     
         </div>
     </div>
-    <script src="../webpack/dist/new.js"></script>
+    <script src="../webpack/dist/new.js">
+    </script>
 </body>
 </html>
