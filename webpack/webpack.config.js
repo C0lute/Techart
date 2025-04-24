@@ -3,6 +3,11 @@ const path = require('path');
 module.exports = {
   entry: {
 	import: './src/index.js',
+	import: '../node_modules/swiper/modules/navigation.css',
+	import: '../node_modules/swiper/modules/pagination.css',
+
+
+
   },
   output: {
     filename: 'new.js',
